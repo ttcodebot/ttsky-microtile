@@ -1,0 +1,67 @@
+{
+  "//": "Configuration for a Tiny Tapeout micro tile on sky130A.",
+  "//": "The die area, pin template, top routing layer (met3) and the PDN layers (met2 and met3)",
+  "//": "are set by tt-support-tools for `tiles: micro` and override anything set here.",
+
+  "//": "PL_TARGET_DENSITY_PCT - You can increase this if Global Placement fails with error GPL-0302.",
+  "PL_TARGET_DENSITY_PCT": 60,
+
+  "//": "CLOCK_PERIOD - Increase this in case you are getting setup time violations.",
+  "//": "The value is in nanoseconds, so 20ns == 50MHz.",
+  "CLOCK_PERIOD": 20,
+
+  "//": "Hold slack margin - Increase them in case you are getting hold violations.",
+  "PL_RESIZER_HOLD_SLACK_MARGIN": 0.1,
+  "GRT_RESIZER_HOLD_SLACK_MARGIN": 0.05,
+
+  "//": "RUN_LINTER, LINTER_INCLUDE_PDK_MODELS - Disabling the linter is not recommended!",
+  "RUN_LINTER": 1,
+  "LINTER_INCLUDE_PDK_MODELS": 1,
+
+  "CLOCK_PORT": "clk",
+
+  "//": "Power, vertical: a VPWR/VGND pair of met2 stripes at each end of the core ties the met1",
+  "//": "rails together. The stripes are centered between met2 tracks, so each blocks two tracks.",
+  "FP_PDN_VWIDTH": 0.8,
+  "FP_PDN_VSPACING": 0.58,
+  "FP_PDN_VPITCH": 61.18,
+  "FP_PDN_VOFFSET": 0.92,
+
+  "//": "Power, horizontal: four met3 stripes, VPWR and VGND alternating every four rows, centered",
+  "//": "between met3 tracks. The container project connects its vertical met4 stripes to them",
+  "//": "with via3, wherever they cross.",
+  "FP_PDN_HWIDTH": 1.0,
+  "FP_PDN_HSPACING": 9.88,
+  "FP_PDN_HPITCH": 21.76,
+  "FP_PDN_HOFFSET": 6.8,
+
+  "//": "No power rings",
+  "FP_PDN_CORE_RING": 0,
+
+  "//": "Save some time",
+  "RUN_KLAYOUT_XOR": 0,
+  "RUN_KLAYOUT_DRC": 0,
+
+  "//": "Don't put clock buffers on the outputs",
+  "DESIGN_REPAIR_BUFFER_OUTPUT_PORTS": 0,
+
+  "//": "Reduce wasted space",
+  "TOP_MARGIN_MULT": 1,
+  "BOTTOM_MARGIN_MULT": 1,
+  "LEFT_MARGIN_MULT": 6,
+  "RIGHT_MARGIN_MULT": 6,
+
+  "//": "Absolute die size",
+  "FP_SIZING": "absolute",
+
+  "GRT_ALLOW_CONGESTION": 1,
+
+  "//": "Clock",
+  "RUN_CTS": 1,
+
+  "//": "MAGIC_DEF_LABELS may cause issues with LVS",
+  "MAGIC_DEF_LABELS": 0,
+
+  "//": "Only export pin area in LEF (without any connected nets)",
+  "MAGIC_WRITE_LEF_PINONLY": 1
+}
