@@ -4,7 +4,7 @@
   "//": "are set by tt-support-tools for `tiles: micro` and override anything set here.",
 
   "//": "PL_TARGET_DENSITY_PCT - You can increase this if Global Placement fails with error GPL-0302.",
-  "PL_TARGET_DENSITY_PCT": 60,
+  "PL_TARGET_DENSITY_PCT": 85,
 
   "//": "CLOCK_PERIOD - Increase this in case you are getting setup time violations.",
   "//": "The value is in nanoseconds, so 20ns == 50MHz.",
