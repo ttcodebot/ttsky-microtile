@@ -1,9 +1,5 @@
 /*
- * tt_um_micro_test.v
- *
- * Micro tile test module, based on the Tiny Tapeout factory test module
- * by Sylvain Munaut <tnt@246tNt.com>
- *
+ * Synthetic micro tile capacity test: 7 stages plus 0 extra bits, 28 flip-flops.
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -16,17 +12,22 @@ module tt_um_micro_test (
     input  wire       rst_n    // reset_n - low to reset
 );
 
-  reg rst_n_i;
-  reg [7:0] cnt;
+  localparam N = 7;
 
-  always @(posedge clk or negedge rst_n)
-    if (~rst_n) rst_n_i <= 1'b0;
-    else rst_n_i <= 1'b1;
+  reg [3:0] s[0:N-1];
+  wire [7:0] fb = {s[N-1], s[N-2]} ^ ui_in;
 
-  always @(posedge clk or negedge rst_n_i)
-    if (~rst_n_i) cnt <= 0;
-    else cnt <= cnt + 1;
+  integer i;
+  always @(posedge clk) begin
+    if (!rst_n) begin
+      for (i = 0; i < N; i = i + 1) s[i] <= 4'd1 + i[3:0] * 4'd7;
+    end else begin
+      s[0] <= fb[3:0] + fb[7:4];
+      for (i = 1; i < N; i = i + 1)
+        s[i] <= (s[i-1] + {s[i][0], s[i][3:1]}) ^ (s[(i*5+3)%N] & {4{ui_in[i%8]}});
+    end
+  end
 
-  assign uo_out = rst_n ? cnt : ui_in;
+  assign uo_out = {s[N-1], s[N/2]} ^ {s[N/3], s[0]};
 
-endmodule  // tt_um_micro_test
+endmodule
