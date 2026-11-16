@@ -18,7 +18,7 @@ jobs:
         with:
           pdk: sky130A
           tools-repo: ttcodebot/tt-support-tools
-          tools-ref: microtile
+          tools-ref: microtile-antenna
 
   precheck:
     needs: gds
@@ -28,4 +28,4 @@ jobs:
         uses: TinyTapeout/tt-gds-action/precheck@ttsky26e
         with:
           tools-repo: ttcodebot/tt-support-tools
-          tools-ref: microtile
+          tools-ref: microtile-antenna
