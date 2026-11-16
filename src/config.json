@@ -28,7 +28,6 @@
   "RUN_KLAYOUT_DRC": 0,
 
   "//": "Don't put clock buffers on the outputs",
-  "DESIGN_REPAIR_BUFFER_OUTPUT_PORTS": 0,
 
   "//": "Reduce wasted space",
   "TOP_MARGIN_MULT": 1,
@@ -48,5 +47,13 @@
   "MAGIC_DEF_LABELS": 0,
 
   "//": "Only export pin area in LEF (without any connected nets)",
-  "MAGIC_WRITE_LEF_PINONLY": 1
+  "MAGIC_WRITE_LEF_PINONLY": 1,
+
+  "//": "Adversarial antenna test settings (any user can set these)",
+  "DESIGN_REPAIR_BUFFER_INPUT_PORTS": false,
+  "DESIGN_REPAIR_BUFFER_OUTPUT_PORTS": false,
+  "RSZ_DONT_TOUCH_RX": "adv_.*",
+  "GRT_LAYER_ADJUSTMENTS": [0.99, 0.8, 0.3, 0, 0, 0],
+  "MANUAL_GLOBAL_PLACEMENTS": {"adv_t0": {"location": [3.0, 29.92], "orientation": "N"}, "adv_t1": {"location": [3.0, 35.36], "orientation": "N"}, "adv_t2": {"location": [3.0, 40.8], "orientation": "N"}, "adv_t3": {"location": [3.0, 46.24], "orientation": "N"}, "adv_tlo": {"location": [8.0, 27.2], "orientation": "FS"}, "adv_i0": {"location": [60, 8.16], "orientation": "N"}, "adv_i1": {"location": [55, 10.88], "orientation": "FS"}, "adv_i2": {"location": [50, 13.6], "orientation": "N"}, "adv_i3": {"location": [47, 16.32], "orientation": "FS"}, "adv_i4": {"location": [45, 19.04], "orientation": "N"}, "adv_i5": {"location": [43, 21.76], "orientation": "FS"}, "adv_i6": {"location": [40, 24.48], "orientation": "N"}, "adv_i7": {"location": [35, 27.2], "orientation": "FS"}, "adv_i8": {"location": [20, 2.72], "orientation": "N"}, "adv_i9": {"location": [3, 5.44], "orientation": "FS"}},
+  "ERROR_ON_DISCONNECTED_PINS": false
 }
