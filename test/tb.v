@@ -18,13 +18,15 @@ module tb ();
   reg rst_n;
   reg [7:0] ui_in;
   wire [7:0] uo_out;
+  reg [5:0] uio_in;
+  wire [5:0] uio_out;
 `ifdef GL_TEST
   wire VPWR = 1'b1;
   wire VGND = 1'b0;
 `endif
 
-  // A micro tile only has clk, rst_n, ui_in and uo_out:
-  tt_um_micro_test user_project (
+  // A micro tile with 6 uio inputs and 6 outputs:
+  tt_um_micro_io6_cnt user_project (
 
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST
@@ -34,6 +36,8 @@ module tb ();
 
       .ui_in (ui_in),   // Dedicated inputs
       .uo_out(uo_out),  // Dedicated outputs
+      .uio_in(uio_in),  // uio inputs
+      .uio_out(uio_out),  // uio outputs
       .clk   (clk),     // clock
       .rst_n (rst_n)    // not reset
   );
