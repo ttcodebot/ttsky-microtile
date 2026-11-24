@@ -1,27 +1,12 @@
-<!---
-
-This file is used to generate your project datasheet. Please fill in the information below and delete any unused
-sections.
-
-You can also include images in this folder and reference them in the markdown. Each image must be less than
-512 kb in size, and the combined size of all images must be less than 1 MB.
--->
-
 ## How it works
 
-The micro tile test module demonstrates the micro tile interface (`clk`, `rst_n`, `ui_in[7:0]`, `uo_out[7:0]`).
+Micro tile test with 2 bidirectional pins (day-0, uio not used, synthetic capacity design, 4 stages + 5 bits, with uio).
 
-It has two modes of operation:
-
-1. Mirroring the input pins to the output pins (when `rst_n` is low).
-2. Outputting an 8-bit counter on the output pins (when `rst_n` is high).
-
-The counter increments on every clock cycle, and resets when `rst_n` is low.
+While `rst_n` is low it is a combinational loopback: `uo_out = ui_in ^ 0x3c`, `uio_out` and `uio_oe` are 0.
 
 ## How to test
 
-1. Set `rst_n` low and observe that the input pins (`ui_in`) are output on the output pins (`uo_out`).
-2. Set `rst_n` high and observe that the counter is output on the output pins (`uo_out`).
+Hold `rst_n` low, drive `ui_in` and `uio_in`, and compare the outputs with the formulas above.
 
 ## External hardware
 
