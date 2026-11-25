@@ -16,4 +16,5 @@ jobs:
       - name: Build docs
         uses: TinyTapeout/tt-gds-action/docs@ttsky26e
         with:
+          tools-repo: ttcodebot/tt-support-tools
           tools-ref: microtile
